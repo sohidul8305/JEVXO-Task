@@ -1,9 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import RootLayout from "./RootLayout/RootLayout";
-
-function Home() {
-  return <h1 style={{padding: "20px"}}>Welcome to the Home Page! It's working.</h1>;
-}
+import Home from "./Pages/Home";
 
 const router = createBrowserRouter([
   {

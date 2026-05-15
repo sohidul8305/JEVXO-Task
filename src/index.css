@@ -1,1 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --color-primary: #FFC247;
+  --color-secondary: #00E5FF;
+  --color-background: #050814;
+  --color-surface: #0a1128;
+  --color-surface-light: #121c3a;
+  --font-sans: "Roboto", sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Range slider thumb ── */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+  border: 2px solid var(--color-background);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  cursor: pointer;
+  border: 2px solid var(--color-background);
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-background); }
+::-webkit-scrollbar-thumb { background: var(--color-surface-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #1e2d5a; }
