@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const navLinks = [
   { name: 'The Hub', href: '/', active: true },
   { name: 'Solutions', href: '#', hasDropdown: true },
-  { name: 'Products', href: '#' },
+  { name: 'Products', href: 'product' },
   { name: 'Success Stories', href: '#' },
   { name: 'Partnership', href: '#' },
 ];
