@@ -13,7 +13,7 @@ const Product = () => {
 
     // ১. ডাটাবেজ থেকে সব প্রোডাক্ট লোড করা (GET Request)
     useEffect(() => {
-        fetch('http://localhost:4000/products')
+        fetch('https://jevoxo-backend.vercel.app/products')
             .then(res => res.json())
             .then(data => setProducts(data))
             .catch(err => console.error("Error fetching products:", err));
@@ -44,7 +44,7 @@ const Product = () => {
         };
 
         // ব্যাকএন্ডে ডাটা পাঠানো
-        fetch('http://localhost:4000/products', {
+        fetch('https://jevoxo-backend.vercel.app/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

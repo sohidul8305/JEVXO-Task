@@ -1,3 +1,4 @@
+import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import RootLayout from "./RootLayout/RootLayout";
 import Home from "./Pages/Home";
@@ -17,23 +18,23 @@ const router = createBrowserRouter([
       },
       {
         path: "about",
-        element: <h1>About Page</h1>,
+        element: <div className="text-white text-center py-20"><h1>About Page</h1></div>,
       },
       {
         path: "product",
-        element: <Product></Product>
+        element: <Product />
       },
       {
         path: "success",
-        element: <Success></Success>
+        element: <Success />
       },
       {
         path: "solutions",
-        element: <Solution></Solution>
+        element: <Solution />
       },
       {
         path: "partner",
-        element: <Partner></Partner>
+        element: <Partner />
       },
     ],
   },

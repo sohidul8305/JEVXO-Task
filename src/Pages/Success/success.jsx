@@ -7,7 +7,7 @@ const Success = () => {
 
     // API থেকে ডেটা ফেচ (GET) করা
     useEffect(() => {
-        fetch('http://localhost:4000/success')
+        fetch('https://jevoxo-backend.vercel.app/success')
             .then(res => res.json())
             .then(data => {
                 setDestinations(data);

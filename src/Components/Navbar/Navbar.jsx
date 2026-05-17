@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, Lock } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { NavLink, Link } from 'react-router'; // react-router থেকে ইম্পোর্ট করা হলো
 
 const navLinks = [
-  { name: 'The Hub', href: '/', active: true },
-  { name: 'Solutions', href: 'solutions', hasDropdown: true },
-  { name: 'Products', href: 'product' },
-  { name: 'Success Stories', href: 'success' },
-  { name: 'Partnership', href: 'partner' },
+  { name: 'The Hub', href: '/' },
+  { name: 'Solutions', href: '/solutions', hasDropdown: true },
+  { name: 'Products', href: '/product' },
+  { name: 'Success Stories', href: '/success' },
+  { name: 'Partnership', href: '/partner' },
 ];
 
 const Navbar = () => {
@@ -31,9 +32,8 @@ const Navbar = () => {
         <div className="px-6 flex items-center justify-between">
           
           {/* ── Logo ── */}
-          <div className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <div className="relative w-8 h-8 flex items-center justify-center">
-                {/* Custom X Logo Placeholder */}
                 <svg viewBox="0 0 24 24" className="w-full h-full fill-none stroke-[2.5px] stroke-cyan-400">
                     <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" />
                 </svg>
@@ -41,21 +41,24 @@ const Navbar = () => {
             <span className="text-xl font-bold tracking-tight text-white">
               JEVXO
             </span>
-          </div>
+          </Link>
 
           {/* ── Desktop Nav Links ── */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <NavLink
                 key={link.name}
-                href={link.href}
-                className={`text-[13px] font-medium transition-colors flex items-center gap-1 ${
-                  link.active ? 'text-blue-500' : 'text-gray-300 hover:text-white'
-                }`}
+                to={link.href}
+                // react-router এর isActive স্টেট ব্যবহার করে কালার হ্যান্ডেল করা হলো
+                className={({ isActive }) => 
+                  `text-[13px] font-medium transition-colors flex items-center gap-1 ${
+                    isActive ? 'text-blue-500' : 'text-gray-300 hover:text-white'
+                  }`
+                }
               >
                 {link.name}
                 {link.hasDropdown && <ChevronDown size={14} className="opacity-50" />}
-              </a>
+              </NavLink>
             ))}
           </div>
 
@@ -73,13 +76,12 @@ const Navbar = () => {
               <Lock size={18} fill="currentColor" fillOpacity={0.2} />
             </button>
 
-            {/* Theme Toggle (Image Style) */}
+            {/* Theme Toggle */}
             <div 
               onClick={() => setIsDarkMode(!isDarkMode)}
               className="w-12 h-6 rounded-full bg-indigo-950 border border-white/10 relative cursor-pointer overflow-hidden"
             >
                 <div className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white transition-all duration-300 ${isDarkMode ? 'right-1' : 'left-1'}`} />
-                {/* Background stars pattern simplified */}
                 <div className="absolute inset-0 opacity-20 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
             </div>
           </div>
@@ -105,13 +107,16 @@ const Navbar = () => {
           >
             <div className="flex flex-col gap-5">
               {navLinks.map((link) => (
-                <a
+                <NavLink
                   key={link.name}
-                  href={link.href}
-                  className={`text-lg font-medium ${link.active ? 'text-blue-500' : 'text-gray-300'}`}
+                  to={link.href}
+                  onClick={() => setIsOpen(false)} // ক্লিক করলে মোবাইল মেনু বন্ধ হবে
+                  className={({ isActive }) => 
+                    `text-lg font-medium ${isActive ? 'text-blue-500' : 'text-gray-300'}`
+                  }
                 >
                   {link.name}
-                </a>
+                </NavLink>
               ))}
               <hr className="border-white/5" />
               <button className="w-full bg-orange-400 text-black font-bold py-3 rounded-xl">
