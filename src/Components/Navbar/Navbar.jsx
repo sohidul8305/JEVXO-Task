@@ -7,7 +7,7 @@ const navLinks = [
   { name: 'Solutions', href: 'solutions', hasDropdown: true },
   { name: 'Products', href: 'product' },
   { name: 'Success Stories', href: 'success' },
-  { name: 'Partnership', href: '#' },
+  { name: 'Partnership', href: 'partner' },
 ];
 
 const Navbar = () => {
